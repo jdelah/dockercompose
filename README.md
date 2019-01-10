@@ -1,17 +1,10 @@
 # Installation
 ## Gitlab
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+hostname: to be modified
+mem_limit: to be modified (limit RAM on container)
 
-```bash
-pip install foobar
-```
 
 ## Jenkins
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+Jenkins behind an NginxProxy with certs to be put in volume
