@@ -1,0 +1,36 @@
+version: '3'
+
+volumes:
+  nextcloud:
+  db_nextcloud:
+services:
+  db_nextcloud:
+    image: mariadb
+    restart: always
+    volumes:
+      - db_nextcloud:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=nnl
+      - MYSQL_PASSWORD=nnl
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  app_nextcloud:
+    image: nextcloud
+    expose:
+      - 80
+      - 443
+    links:
+      - db_nextcloud
+    environment:
+      - "VIRTUAL_HOST=cloud.orwell.ovh"
+#      - "VIRTUAL_PROTO=https"
+#      - "VIRTUAL_PORT=443"
+    volumes:
+      - ./data:/var/www/html
+    restart: always
+
+networks:
+  default:
+    external:
+      name: webproxy
