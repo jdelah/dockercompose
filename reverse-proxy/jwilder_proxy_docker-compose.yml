@@ -8,7 +8,6 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./nginx:/etc/nginx
 networks:
   default:
     external:

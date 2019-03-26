@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app_gestsup:
+    image: mattrayner/lamp:latest
+    expose:
+      - 80
+      - 443
+    environment:
+      - "VIRTUAL_HOST=support.orwell.ovh"
+    volumes:
+      - ./app:/app
+      - ./mysql:/var/lib/mysql
+    restart: always
+
+networks:
+  default:
+    external:
+      name: webproxy
